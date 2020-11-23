@@ -1,0 +1,35 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
+<html>
+    <head>
+        <title>
+            BookYt System
+        </title>
+    </head>
+
+    <body>
+        <h1>login management</h1>
+        <form method="post" action="/login_action/">
+            <!--form新增一個行為method -->
+            <!--GET:伺服器的操作，從指定資源請求資料 -->
+            <!--POST:伺服器的操作，從指定資源提交要被處裡的資料 -->
+            <!--form新增一個行為action，來指定提交Django伺服器接收資料並處裡的方式 -->
+            <input name="username" type="text" placeholder="username"><br>
+            <!--使用者輸入框,placeholder提示訊息-->
+            <input name="password" type="password" placeholder="password"><br>
+            <!--密碼輸入框 -->
+            {{error}}
+            <!--密碼輸入錯誤，需要用{{error}}回應 -->
+            <button id="btn" type="submit">login</button>
+            <!--輸入完成後的確定鈕 -->
+            {%csrf_token%}
+            <!--針對post做CSRF的Token -->
+            <!--Django針對CSRF的保護措施是在生成的每個表單中放置一個自動生成的Token，透過這個Token判定POST是否來自同一個網頁 -->
+            <a href="{% provider_login_url 'google' %}">Google Connect</a>
+        </form>   
+        
+        
+    </body>
+</html>
+

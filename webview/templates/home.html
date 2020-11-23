@@ -1,0 +1,67 @@
+<html lang="zh-TW">
+    <head>
+        {% load bootstrap3 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        <title>Books System</title>
+    </head>
+    <body role="document">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/home/">Book Manage System</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/restful">RestfulAPI</a></li>
+                        <li><a href="/search">YtService</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">{{user}} online</a></li>
+                        <li><a href="/logout/">logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+         <!--發佈會搜尋表單-->
+         <div class="page-header" style="padding-top:60px;">
+            <div id="navbar" class="navbar-collapse collapse">
+                <form class="navbar-form" method="get" action="/search_title/">
+                    <div class="form-group">
+                        <input name="title" type="text" placeholder="title" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">search</button>
+                </form>
+            </div>       
+        </div>
+        
+        <!--發佈會串列-->
+        <div class="row" style="padding-top:80px;">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>id</th><th>title</th><th>author</th><th>isbn</th><th>publisher</th><th>publication_year</th><th>last_modified_date</th><th>created_date</th><th>created_at</th><th>update_at</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                        <tr>
+                            <td>{{book.id}}</td>
+                            <td>{{book.title}}</td>
+                            <td>{{book.author}}</td>
+                            <td>{{book.isbn}}</td>
+                            <td>{{book.publisher}}</td>
+                            <td>{{book.publication_year}}</td>
+                            <td>{{book.last_modified_date}}</td>
+                            <td>{{book.created_date}}</td>
+                            <td>{{book.created_at}}</td>
+                            <td>{{book.update_at}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
