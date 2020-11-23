@@ -62,6 +62,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myweb.urls'
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 TEMPLATES = [
     {
